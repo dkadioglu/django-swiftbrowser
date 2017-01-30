@@ -1,7 +1,7 @@
 """ Standalone webinterface for Openstack Swift. """
 # -*- coding: utf-8 -*-
 import time
-import urlparse
+import urllib.parse
 import hmac
 import string
 import random
@@ -103,11 +103,11 @@ def get_temp_url(storage_url, auth_token, container, objectname, expires=600):
         return None
 
     expires += int(time.time())
-    url_parts = urlparse.urlparse(storage_url)
+    url_parts = urllib.parse.urlparse(storage_url)
     path = "%s/%s/%s" % (url_parts.path, container, objectname)
     base = "%s://%s" % (url_parts.scheme, url_parts.netloc)
     hmac_body = 'GET\n%s\n%s' % (expires, path)
-    sig = hmac.new(str(key), str(hmac_body.encode("utf-8")), sha1).hexdigest()
+    sig = hmac.new(bytearray(key, 'utf-8'), bytearray(hmac_body, 'utf-8'), sha1).hexdigest()
     url = '%s%s?temp_url_sig=%s&temp_url_expires=%s' % (
         base, path, sig, expires)
     return url
