@@ -47,15 +47,15 @@ INSTALLED_APPS = (
     'swiftbrowser',
 )
 
-SWIFT_AUTH_URL = 'http://127.0.0.1:8080/auth/v1.0'
+SWIFT_AUTH_URL = 'http://'+os.environ['SWHOSTNAME']+':8080/auth/v1.0'
 SWIFT_AUTH_VERSION = 1  # 2 for keystone
-STORAGE_URL = 'http://127.0.0.1:8080/v1/'
-BASE_URL = 'http://127.0.0.1:8000'  # default if using built-in runserver
-SWAUTH_URL = 'http://127.0.0.1:8080/auth/v2'
+STORAGE_URL = 'http://'+os.environ['SWHOSTNAME']+':8080/v1/'
+BASE_URL = 'http://'+os.environ['SBHOSTNAME']+':8000'  # default if using built-in runserver
+SWAUTH_URL = 'http://'+os.environ['SWHOSTNAME']+':8080/auth/v2'
 
 TIME_ZONE = 'Europe/Berlin'
 LANGUAGE_CODE = 'de-de'
 SECRET_KEY = 'DONT_USE_THIS_IN_PRODUCTION'
 STATIC_URL = "http://cdnjs.cloudflare.com/ajax/libs/"
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0', os.environ['SBHOSTNAME']]
