@@ -297,7 +297,7 @@ def tempurl(request, container, objectname):
     auth_token = request.session.get('auth_token', '')
 
     url = get_temp_url(storage_url, auth_token,
-                       container, objectname, 7 * 24 * 3600)
+                       container, objectname, 6 * 3600)
 
     if not url:
         messages.add_message(request, messages.ERROR, _("Access denied."))
