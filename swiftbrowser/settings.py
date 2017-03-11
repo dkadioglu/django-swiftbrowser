@@ -47,11 +47,11 @@ INSTALLED_APPS = (
     'swiftbrowser',
 )
 
-SWIFT_AUTH_URL = 'http://'+os.environ['SWHOSTNAME']+':8080/auth/v1.0'
+SWIFT_AUTH_URL = 'http://'+os.environ['SWHOSTNAME']+':'+os.environ['SWPORT']+'/auth/v1.0'
 SWIFT_AUTH_VERSION = 1  # 2 for keystone
-STORAGE_URL = 'http://'+os.environ['SWHOSTNAME']+':8080/v1/'
-BASE_URL = 'http://'+os.environ['SBHOSTNAME']+':8000'  # default if using built-in runserver
-SWAUTH_URL = 'http://'+os.environ['SWHOSTNAME']+':8080/auth/v2'
+STORAGE_URL = 'http://'+os.environ['SWHOSTNAME']+':'+os.environ['SWPORT']+'/v1/'
+BASE_URL = 'http://'+os.environ['SBHOSTNAME']+':'+os.environ['SBPORT']  # default if using built-in runserver
+SWAUTH_URL = 'http://'+os.environ['SWHOSTNAME']+':'+os.environ['SWPORT']+'/auth/v2'
 
 TIME_ZONE = 'Europe/Berlin'
 LANGUAGE_CODE = 'de-de'
