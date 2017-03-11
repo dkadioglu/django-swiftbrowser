@@ -1,6 +1,12 @@
 """ Settings for Django project """
 import os
 
+if os.environ.get('DJANGO_DEBUG'):
+    print("Debug is enabled.")
+    DEBUG = True
+else:
+    DEBUG = False
+
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 USE_L10N = True
